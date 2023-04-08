@@ -1,97 +1,105 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --clr-pr-marine-blue: hsl(213, 96%, 18%);
+  --clr-pr-purplish-blue: hsl(243, 100%, 62%);
+  --clr-pr-pastel-blue: hsl(228, 100%, 84%);
+  --clr-pr-light-blue: hsl(206, 94%, 87%);
+  --clr-pr-Strawberry-red: hsl(354, 84%, 57%);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --clr-sc-cool-gray: hsl(231, 11%, 63%);
+  --clr-sc-light-gray: hsl(229, 24%, 87%);
+  --clr-sc-magnolia: hsl(217, 100%, 97%);
+  --clr-sc-alabaster: hsl(231, 100%, 99%);
+  --clr-sc-white: hsl(0, 0%, 100%);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --fs-300: 0.85rem;
+  --fs-400: 1rem;
+  --fs-500: 3rem;
+
+  --fw-regular: 400;
+  --fw-semibold: 500;
+  --fw-bold: 700;
+
+  --ff-base: "Ubuntu", sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.text-purplish-blue {
+  color: var(--clr-pr-purplish-blue);
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.text-marine-blue {
+  color: var(--clr-pr-marine-blue);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.text-cool-gray {
+  color: var(--clr-sc-cool-gray);
 }
 
-.card {
-  padding: 2em;
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-500 {
+  font-size: var(--fs-500);
 }
 
-.read-the-docs {
-  color: #888;
+.fw-regular {
+  font-weight: var(--fw-regular);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.fw-semibold {
+  font-weight: var(--fw-semibold);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.fw-bold {
+  font-weight: var(--fw-bold);
 }
