@@ -41,6 +41,8 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--ff-base);
+  background-color: lightcoral;
 }
 img,
 picture,
@@ -82,6 +84,10 @@ h6 {
   color: var(--clr-sc-cool-gray);
 }
 
+.text-sc-white {
+  color: var(--clr-sc-white);
+}
+
 .fs-300 {
   font-size: var(--fs-300);
 }
@@ -102,4 +108,61 @@ h6 {
 
 .fw-bold {
   font-weight: var(--fw-bold);
+}
+
+.flex {
+  --gap: 1rem;
+  display: flex;
+  gap: var(--gap);
+}
+/* Project */
+
+/* Sidebar */
+.side-bar {
+  justify-content: center;
+}
+
+.idx-btn {
+  background-color: transparent;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border: 2px solid var(--clr-sc-white);
+}
+
+.idx-label {
+  display: none;
+}
+
+.idx-btn:is(:hover, :focus) {
+  background-color: var(--clr-pr-light-blue);
+}
+
+@media (min-width: 40em) {
+  .side-bar {
+    flex-direction: column;
+  }
+  .idx-btn-group {
+    align-items: center;
+  }
+  .idx-label {
+    display: block;
+  }
+}
+
+/* bottom */
+.page-btn-group {
+  justify-content: space-between;
+}
+
+.prev-btn {
+  background: transparent;
+  border: 0;
+}
+
+.next-btn {
+  padding: 0.5rem 1rem;
+  background: var(--clr-pr-marine-blue);
+  border: 0;
+  border-radius: 0.5rem;
 }
