@@ -20,57 +20,72 @@
     <title>Multi-step form</title>
   </head>
   <body>
-    <main>
-      <div class="side-bar flex">
-        <div class="idx-btn-group flex">
-          <button class="idx-btn fs-400 fw-semibold text-sc-white">1</button>
-          <div class="idx-label">
-            <p class="text-cool-gray">STEP 1</p>
-            <p class="fw-semibold text-sc-white">YOUR INFO</p>
+    <main class="main">
+      <div class="side-bar-group">
+        <div class="side-bar flex">
+          <div class="idx-btn-group flex">
+            <button class="idx-btn fs-400 fw-semibold text-sc-white">1</button>
+            <div class="idx-label">
+              <p class="text-cool-gray">STEP 1</p>
+              <p class="fw-semibold text-sc-white">YOUR INFO</p>
+            </div>
           </div>
-        </div>
-        <div class="idx-btn-group flex">
-          <button class="idx-btn fs-400 fw-semibold text-sc-white">2</button>
-          <div class="idx-label">
-            <p class="text-cool-gray">STEP 2</p>
-            <p class="fw-semibold text-sc-white">SELECT PLAN</p>
+          <div class="idx-btn-group flex">
+            <button class="idx-btn fs-400 fw-semibold text-sc-white">2</button>
+            <div class="idx-label">
+              <p class="text-cool-gray">STEP 2</p>
+              <p class="fw-semibold text-sc-white">SELECT PLAN</p>
+            </div>
           </div>
-        </div>
-        <div class="idx-btn-group flex">
-          <button class="idx-btn fs-400 fw-semibold text-sc-white">3</button>
-          <div class="idx-label">
-            <p class="text-cool-gray">STEP 3</p>
-            <p class="fw-semibold text-sc-white">ADD-ONS</p>
+          <div class="idx-btn-group flex">
+            <button class="idx-btn fs-400 fw-semibold text-sc-white">3</button>
+            <div class="idx-label">
+              <p class="text-cool-gray">STEP 3</p>
+              <p class="fw-semibold text-sc-white">ADD-ONS</p>
+            </div>
           </div>
-        </div>
-        <div class="idx-btn-group flex">
-          <button class="idx-btn fs-400 fw-semibold text-sc-white">4</button>
-          <div class="idx-label">
-            <p class="text-cool-gray">STEP 4</p>
-            <p class="fw-semibold text-sc-white">SUMMARY</p>
+          <div class="idx-btn-group flex">
+            <button class="idx-btn fs-400 fw-semibold text-sc-white">4</button>
+            <div class="idx-label">
+              <p class="text-cool-gray">STEP 4</p>
+              <p class="fw-semibold text-sc-white">SUMMARY</p>
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <section>
-          <h1>Personal info</h1>
-          <p>Please provide your name, email address, and phone number.</p>
-          <div>
-            <div>
-              <label for="c_name">Name</label
-              ><input type="text" id="name" placeholder="e.g. Stephen King" />
-            </div>
-            <div>
-              <label for="c_email">Email Address</label
+      <div class="form-group">
+        <section class="personal-section form-section active">
+          <div class="section-title">
+            <h1 class="fw-bold text-marine-blue fs-500">Personal info</h1>
+            <p class="text-cool-gray">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <div class="space">
+            <div class="input-wrapper flex">
+              <label for="c_name" class="fs-300 text-marine-blue">Name</label
               ><input
+                class="fw-semibold"
+                type="text"
+                id="name"
+                placeholder="e.g. Stephen King"
+              />
+            </div>
+            <div class="input-wrapper flex">
+              <label for="c_email" class="fs-300 text-marine-blue"
+                >Email Address</label
+              ><input
+                class="fw-semibold"
                 type="text"
                 id="email"
                 placeholder="e.g. stephenking@lorem.com"
               />
             </div>
-            <div>
-              <label for="c_phone">Phone Number</label
+            <div class="input-wrapper flex">
+              <label for="c_phone" class="fs-300 text-marine-blue"
+                >Phone Number</label
               ><input
+                class="fw-semibold"
                 type="text"
                 id="phone"
                 placeholder="e.g. +1 234 567 890"
@@ -78,9 +93,11 @@
             </div>
           </div>
         </section>
-        <section>
-          <h1>Select your plan</h1>
-          <p>You have the option of monthly or yearly billing.</p>
+        <section class="form-section">
+          <h1 class="fw-bold text-marine-blue fs-500">Select your plan</h1>
+          <p class="text-cool-gray">
+            You have the option of monthly or yearly billing.
+          </p>
           <div>
             <div>
               <img src="" alt="" />
@@ -110,9 +127,11 @@
             <p>Yearly</p>
           </div>
         </section>
-        <section>
-          <h1>Pick add-ons</h1>
-          <p>Add-ons help enhance your gaming experience.</p>
+        <section class="form-section">
+          <h1 class="fw-bold text-marine-blue fs-500">Pick add-ons</h1>
+          <p class="text-cool-gray">
+            Add-ons help enhance your gaming experience.
+          </p>
           <div>
             <div>
               <div>
@@ -142,24 +161,26 @@
             </div>
           </div>
         </section>
-        <section>
-          <h1>Finishing up</h1>
-          <p>Double-check everything looks OK before confirming.</p>
+        <section class="form-section">
+          <h1 class="fw-bold text-marine-blue fs-500">Finishing up</h1>
+          <p class="text-cool-gray">
+            Double-check everything looks OK before confirming.
+          </p>
           <div></div>
         </section>
-        <section>
+        <section class="form-section">
           <img src="" alt="" />
-          <h1>Thank you!</h1>
+          <h1 class="">Thank you!</h1>
           <p>
             Thanks for confirming your subscription! We hope you have fun using
             our platform. If you ever need support, please feel free to email us
             at support@loremgaming.com.
           </p>
         </section>
-      </div>
-      <div class="page-btn-group flex">
-        <button class="prev-btn text-cool-gray">Go Back</button>
-        <button class="next-btn text-sc-white">Next Step</button>
+        <div class="page-btn-group flex">
+          <button class="prev-btn text-cool-gray">Go Back</button>
+          <button class="next-btn text-sc-white">Next Step</button>
+        </div>
       </div>
     </main>
   </body>
