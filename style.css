@@ -126,6 +126,11 @@ h6 {
   --space: 1rem;
   margin-top: var(--space);
 }
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
 /* Project */
 
 /* Sidebar */
@@ -192,6 +197,51 @@ h6 {
   border-radius: 5px;
 }
 
+/* plan section */
+.plan-group {
+  display: grid;
+  gap: 1rem;
+}
+.plan-option {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--clr-sc-light-gray);
+  border-radius: 0.5rem;
+}
+
+.duration-option {
+  background: var(--clr-sc-alabaster);
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0.75rem;
+}
+
+.duration-btn {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0.25rem;
+  height: 1.5rem;
+  width: 2.5rem;
+  background: var(--clr-pr-marine-blue);
+}
+
+.duration-chose {
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  background: var(--clr-sc-white);
+}
+
+.monthly {
+  margin-right: auto;
+}
+
+.yearly {
+  margin-left: auto;
+}
+
 /* bottom */
 .page-btn-group {
   justify-content: space-between;
@@ -230,7 +280,7 @@ h6 {
   .side-bar-group {
     background-image: url("./assets/images/bg-sidebar-desktop.svg");
     height: 100%;
-    width: clamp(17rem, 50vw, 18rem);
+    width: clamp(17rem, 20vw, 18rem);
     border-radius: 1rem;
   }
   .side-bar {
@@ -273,5 +323,16 @@ h6 {
 
   .page-btn-group {
     padding-inline: 5rem;
+  }
+}
+
+@media (min-width: 50em) {
+  .plan-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plan-option {
+    flex-direction: column;
+    gap: 3rem;
   }
 }
