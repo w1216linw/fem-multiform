@@ -11,8 +11,8 @@
   --clr-sc-alabaster: hsl(231, 100%, 99%);
   --clr-sc-white: hsl(0, 0%, 100%);
 
-  --fs-300: 0.85rem;
-  --fs-400: 1rem;
+  --fs-300: 0.75rem;
+  --fs-400: 0.875rem;
   --fs-500: 1.25rem;
 
   --fw-regular: 400;
@@ -24,6 +24,8 @@
 
 @media (min-width: 40em) {
   :root {
+    --fs-300: 0.85rem;
+    --fs-400: 1rem;
     --fs-500: 2rem;
   }
 }
@@ -120,6 +122,10 @@ h6 {
   --gap: 1rem;
   display: flex;
   gap: var(--gap);
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 :where(.space > * + *:not(:first-child)) {
@@ -242,6 +248,83 @@ h6 {
   margin-left: auto;
 }
 
+/* add ons section */
+.addOns-group {
+  display: grid;
+  gap: 1rem;
+}
+
+.addOns-option {
+  border: 1px solid var(--clr-sc-light-gray);
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.option-checkmark {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--clr-sc-white);
+  border: 1px solid var(--clr-sc-light-gray);
+}
+
+.option-checkmark img {
+  display: none;
+}
+
+.option-desc {
+  flex-grow: 1;
+}
+
+.addOn-checked {
+  border-color: var(--clr-pr-purplish-blue);
+}
+
+.addOn-checked > .option-checkmark {
+  background: var(--clr-pr-purplish-blue);
+  border-color: var(--clr-pr-purplish-blue);
+}
+
+.addOn-checked > .option-checkmark > img {
+  display: block;
+}
+
+/* finish section */
+.chose-details {
+  background: var(--clr-sc-alabaster);
+  border-radius: 0.5rem;
+  padding: 1.25rem 1rem;
+}
+
+.chose-details {
+  display: grid;
+}
+
+.sep-line {
+  border: 0;
+  border-top: 1px solid var(--clr-sc-light-gray);
+}
+
+.total-amount {
+  padding-inline: 1rem;
+}
+
+/* thank you section */
+.thankYou-section {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+}
+
+.thankYou-section > img {
+  width: 3.5rem;
+  aspect-ratio: 1;
+  margin-bottom: 1.5rem;
+}
+
 /* bottom */
 .page-btn-group {
   justify-content: space-between;
@@ -259,13 +342,17 @@ h6 {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 40em) {
+@media (max-width: 45em) {
   .form-group {
     margin-top: -5rem;
   }
+
+  .thankYou-section {
+    padding-block: 5rem;
+  }
 }
 
-@media (min-width: 40em) {
+@media (min-width: 45em) {
   .main {
     width: 100%;
     max-width: 70rem;
@@ -324,9 +411,18 @@ h6 {
   .page-btn-group {
     padding-inline: 5rem;
   }
+
+  /* thank you section */
+  .thankYou-section {
+    flex-grow: 1;
+    place-content: center;
+  }
+  .thankYou-section > img {
+    width: 4.5rem;
+  }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 55em) {
   .plan-group {
     grid-template-columns: repeat(3, 1fr);
   }
