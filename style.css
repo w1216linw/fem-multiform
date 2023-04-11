@@ -159,6 +159,7 @@ h6 {
   aspect-ratio: 1;
   border-radius: 100%;
   border: 2px solid var(--clr-sc-white);
+  transition: background-color ease-out 200ms;
 }
 
 .idx-label {
@@ -166,6 +167,10 @@ h6 {
 }
 
 .idx-btn:is(:hover, :focus) {
+  background-color: var(--clr-pr-light-blue);
+}
+
+.idx-btn-active {
   background-color: var(--clr-pr-light-blue);
 }
 
@@ -184,8 +189,8 @@ h6 {
   display: none;
 }
 
-.active {
-  display: block;
+.form-section.active {
+  display: grid;
 }
 
 .section-title {
@@ -314,8 +319,8 @@ h6 {
 
 /* thank you section */
 .thankYou-section {
+  display: none;
   text-align: center;
-  display: grid;
   justify-items: center;
 }
 

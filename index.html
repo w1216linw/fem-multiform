@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="main" defer></script>
     <title>Multi-step form</title>
   </head>
   <body>
@@ -24,7 +25,11 @@
       <div class="side-bar-group">
         <div class="side-bar flex">
           <div class="idx-btn-group flex">
-            <button class="idx-btn fs-400 fw-semibold text-sc-white">1</button>
+            <button
+              class="idx-btn fs-400 fw-semibold text-sc-white idx-btn-active"
+            >
+              1
+            </button>
             <div class="idx-label">
               <p class="text-cool-gray">STEP 1</p>
               <p class="fw-semibold text-sc-white">YOUR INFO</p>
@@ -54,7 +59,7 @@
         </div>
       </div>
       <div class="form-group">
-        <section class="personal-section form-section">
+        <section class="personal-section form-section active">
           <div class="section-title">
             <h1 class="fw-bold text-marine-blue fs-500">Personal info</h1>
             <p class="text-cool-gray">
@@ -227,7 +232,7 @@
             </div>
           </div>
         </section>
-        <section class="thankYou-section form-section active">
+        <section class="thankYou-section form-section">
           <img src="./assets/images/icon-thank-you.svg" alt="thank you" />
           <h1 class="fs-500 fw-bold text-marine-blue">Thank you!</h1>
           <p class="text-cool-gray">
