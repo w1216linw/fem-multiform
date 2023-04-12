@@ -158,7 +158,7 @@
             </p>
           </div>
           <div class="addOns-group">
-            <div class="addOns-option flex addOn-checked">
+            <div class="addOns-option flex">
               <div class="option-checkmark">
                 <img src="./assets/images/icon-checkmark.svg" alt="checked" />
               </div>
@@ -213,28 +213,21 @@
                 class="chose-plan flex space-between text-marine-blue fw-bold"
               >
                 <div>
-                  <p>Arcade (<span>Monthly</span>)</p>
+                  <p id="summary-plan"></p>
                   <button class="change-plan-btn text-cool-gray fw-regular">
                     Change
                   </button>
                 </div>
-                <p>$9/mo</p>
+                <p id="summary-plan-price"></p>
               </div>
               <hr class="sep-line" />
-              <div class="chose-addOns space">
-                <div class="flex space-between">
-                  <p class="text-cool-gray">Online service</p>
-                  <p class="text-marine-blue">+$1/mo</p>
-                </div>
-                <div class="flex space-between">
-                  <p class="text-cool-gray">Larger storage</p>
-                  <p class="text-marine-blue">+$2/mo</p>
-                </div>
-              </div>
+              <div class="chose-addOns space"></div>
             </div>
             <div class="total-amount flex space-between">
-              <p class="text-cool-gray">Total (per <span>month</span>)</p>
-              <p class="text-purplish-blue fw-semibold">+$12/mo</p>
+              <p class="text-cool-gray">
+                Total (per <span id="summary-duration">month</span>)
+              </p>
+              <p id="summary-total" class="text-purplish-blue fw-semibold"></p>
             </div>
           </div>
         </section>

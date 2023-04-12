@@ -219,6 +219,11 @@ h6 {
   border-radius: 0.5rem;
 }
 
+.plan-chose {
+  border-color: var(--clr-pr-purplish-blue);
+  background: var(--clr-sc-alabaster);
+}
+
 .duration-option {
   background: var(--clr-sc-alabaster);
   border-radius: 0.5rem;
@@ -315,6 +320,11 @@ h6 {
 
 .total-amount {
   padding-inline: 1rem;
+}
+
+#summary-plan,
+.addOn-title {
+  text-transform: capitalize;
 }
 
 /* thank you section */

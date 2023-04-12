@@ -1,4 +1,4 @@
-const price = {
+const priceData = {
   monthly: {
     prefix: "mo",
     plan: {
@@ -26,6 +26,9 @@ const price = {
     },
   },
 };
+
+const planData = ["arcade", "advanced", "pro"];
+const addOnData = ["online service", "larger storage", "customizable profile"];
 class Sidebar {
   constructor() {
     this.buttons = document.querySelectorAll(".idx-btn");
@@ -64,9 +67,11 @@ class Form {
 }
 
 class Plan {
-  constructor(price) {
+  constructor(price, plan, addons) {
+    this.plan = plan;
+    this.addons = addons;
     this.price = price;
-    this.currentDuration = "mo";
+    this.currentDuration = price.monthly;
     this.arcade = document.getElementById("plan-arcade-price");
     this.advanced = document.getElementById("plan-advanced-price");
     this.pro = document.getElementById("plan-pro-price");
@@ -77,14 +82,16 @@ class Plan {
   }
 
   switchDuration() {
-    switch (this.currentDuration) {
+    switch (this.currentDuration.prefix) {
       case "mo":
-        this.setPlan(this.price.yearly);
+        this.currentDuration = this.price.yearly;
+        this.updatePrice(this.price.yearly);
         this.chose.classList.remove("monthly");
         this.chose.classList.add("yearly");
         break;
       case "yr":
-        this.setPlan(this.price.monthly);
+        this.currentDuration = this.price.monthly;
+        this.updatePrice(this.price.monthly);
         this.chose.classList.remove("yearly");
         this.chose.classList.add("monthly");
         break;
@@ -93,8 +100,7 @@ class Plan {
     }
   }
 
-  setPlan(duration) {
-    this.currentDuration = duration.prefix;
+  updatePrice(duration) {
     this.arcade.textContent = `$${duration.plan.arcade}/${duration.prefix}
     `;
     this.advanced.textContent = `$${duration.plan.advanced}/${duration.prefix}
@@ -108,12 +114,119 @@ class Plan {
     this.custom.textContent = `$${duration.addOns.custom}/${duration.prefix}
     `;
   }
+
+  getPlanDetail(idx) {
+    return {
+      price: Object.values(this.currentDuration.plan)[idx],
+      title: this.plan[idx],
+      duration: this.currentDuration.prefix,
+    };
+  }
+
+  getAddOnsDetail(idx) {
+    const prices = Object.values(this.currentDuration.addOns);
+
+    return idx.reduce(
+      (acc, elem) => {
+        acc.total += prices[elem];
+        acc.items.push({ title: this.addons[elem], price: prices[elem] });
+        return acc;
+      },
+      {
+        items: [],
+        duration: this.currentDuration.prefix,
+      }
+    );
+  }
+
+  getTotal(planIdx, addOnIdx) {
+    const prices = Object.values(this.currentDuration.addOns);
+
+    const addOns = addOnIdx.reduce((sum, elem) => {
+      return (sum += prices[elem]);
+    }, 0);
+
+    const plan = Object.values(this.currentDuration.plan)[planIdx];
+
+    return { total: addOns + plan, duration: this.currentDuration.prefix };
+  }
+}
+
+class User {
+  constructor() {
+    this._plans = document.querySelectorAll(".plan-option");
+    this._currentPlanIdx = -1;
+    this._addOns = [];
+  }
+
+  setPlan(idx) {
+    if (this._currentPlanIdx !== -1)
+      this._plans[this.currentPlanIdx].classList.remove("plan-chose");
+    this._plans[idx].classList.add("plan-chose");
+    this._currentPlanIdx = idx;
+  }
+
+  setAddOn(idx) {
+    if (this._addOns.indexOf(idx) === -1) this._addOns.push(idx);
+    else {
+      this._addOns = this._addOns.filter((elem) => elem != idx);
+    }
+  }
+
+  get currentPlanIdx() {
+    return this._currentPlanIdx;
+  }
+
+  get addOns() {
+    return this._addOns.sort();
+  }
+}
+
+class Summary {
+  constructor() {
+    this.planTitle = document.querySelector("#summary-plan");
+    this.planPrice = document.querySelector("#summary-plan-price");
+    this.addOns = document.querySelector(".chose-addOns");
+    this.duration = document.querySelector("#summary-duration");
+    this.total = document.querySelector("#summary-total");
+  }
+
+  setPlan({ title, price, duration }) {
+    this.planTitle.textContent = `${title} (${
+      duration === "mo" ? "Monthly" : "Yearly"
+    })`;
+    this.planPrice.textContent = `$${price}/${duration}`;
+  }
+
+  setAddOn({ items, duration }) {
+    let temp = "";
+    console.log(items);
+    items.forEach((item) => {
+      temp += createAddOnElem(item.title, item.price, duration);
+    });
+    this.addOns.innerHTML = temp;
+  }
+
+  setTotal({ total, duration }) {
+    this.duration.textContent = duration === "mo" ? "month" : "year";
+    this.total.textContent = `$${total}/${duration}`;
+  }
+}
+
+function createAddOnElem(title, price, duration) {
+  return `
+  <div class="flex space-between">
+    <p class="addOn-title text-cool-gray">${title}</p>
+    <p class="text-marine-blue">+${price}/${duration}</p>
+  </div>`;
 }
 
 class App {
-  constructor(price) {
+  constructor(priceData, planData, addOnData) {
     this.form = new Form();
-    this.plan = new Plan(price);
+    this.plan = new Plan(priceData, planData, addOnData);
+    this.user = new User();
+    this.summary = new Summary();
   }
 
   nextPage() {
@@ -128,9 +241,33 @@ class App {
   switchDuration() {
     this.plan.switchDuration();
   }
+  choosePlan(idx) {
+    this.user.setPlan(idx);
+    this.setSummaryPlan();
+  }
+  chooseAddOn(idx) {
+    this.user.setAddOn(idx);
+    this.setSummaryAddOn();
+  }
+  setSummaryPlan() {
+    const plan = this.plan.getPlanDetail(this.user.currentPlanIdx);
+    this.summary.setPlan(plan);
+  }
+  setSummaryAddOn() {
+    const addOn = this.plan.getAddOnsDetail(this.user.addOns);
+    this.summary.setAddOn(addOn);
+    this.setSummaryTotal();
+  }
+  setSummaryTotal() {
+    const total = this.plan.getTotal(
+      this.user.currentPlanIdx,
+      this.user.addOns
+    );
+    this.summary.setTotal(total);
+  }
 }
 
-const app = new App(price);
+const app = new App(priceData, planData, addOnData);
 
 /* Event Listener */
 document.querySelector(".next-btn").addEventListener("click", () => {
@@ -149,4 +286,17 @@ document.querySelectorAll(".idx-btn").forEach((elem, idx) => {
 
 document.querySelector(".duration-btn").addEventListener("click", () => {
   app.switchDuration();
+});
+
+document.querySelectorAll(".plan-option").forEach((elem, idx) => {
+  elem.addEventListener("click", () => {
+    app.choosePlan(idx);
+  });
+});
+
+document.querySelectorAll(".addOns-option").forEach((elem, idx) => {
+  elem.addEventListener("click", () => {
+    elem.classList.toggle("addOn-checked");
+    app.chooseAddOn(idx);
+  });
 });
