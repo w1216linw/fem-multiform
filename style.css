@@ -167,7 +167,7 @@ h6 {
 }
 
 .idx-btn:is(:hover, :focus) {
-  background-color: var(--clr-pr-light-blue);
+  background-color: var(--clr-sc-light-gray);
 }
 
 .idx-btn-active {
