@@ -286,6 +286,13 @@ class App {
     );
     this.summary.setTotal(total);
   }
+
+  changeFinalDuration() {
+    this.switchDuration();
+    this.setSummaryPlan();
+    this.setSummaryAddOn();
+    this.setSummaryTotal();
+  }
 }
 
 const app = new App(priceData, planData, addOnData);
@@ -320,4 +327,8 @@ document.querySelectorAll(".addOns-option").forEach((elem, idx) => {
     elem.classList.toggle("addOn-checked");
     app.chooseAddOn(idx);
   });
+});
+
+document.querySelector(".change-plan-btn").addEventListener("click", () => {
+  app.changeFinalDuration();
 });

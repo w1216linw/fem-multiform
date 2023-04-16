@@ -316,6 +316,13 @@ h6 {
   display: grid;
 }
 
+.change-plan-btn {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .sep-line {
   border: 0;
   border-top: 1px solid var(--clr-sc-light-gray);
