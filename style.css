@@ -180,6 +180,9 @@ h6 {
   width: 90%;
   max-width: 30rem;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .form-section {
@@ -352,9 +355,18 @@ h6 {
 
 .next-btn {
   padding: 0.5rem 1rem;
+  margin-left: auto;
   background: var(--clr-pr-marine-blue);
   border: 0;
   border-radius: 0.5rem;
+}
+
+.confirm-btn {
+  background: var(--clr-pr-purplish-blue);
+}
+
+.hidden-btn {
+  display: none;
 }
 
 @media (max-width: 45em) {
@@ -364,6 +376,15 @@ h6 {
 
   .thankYou-section {
     padding-block: 5rem;
+  }
+
+  .page-btn-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: var(--clr-sc-white);
   }
 }
 
@@ -400,9 +421,6 @@ h6 {
   /* form-section */
   .form-group {
     max-width: 40rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding-block: 1rem;
   }
   .form-section {

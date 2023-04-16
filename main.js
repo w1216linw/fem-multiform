@@ -44,6 +44,8 @@ class Form {
   constructor() {
     this.pages = document.querySelectorAll(".form-section");
     this.currentPage = document.querySelector(".form-section.active");
+    this.prevBtn = document.querySelector(".prev-btn");
+    this.nextBtn = document.querySelector(".next-btn");
     this.currentIdx = 0;
     this.sidebar = new Sidebar();
   }
@@ -59,6 +61,26 @@ class Form {
     if (idx < this.sidebar.buttons.length) {
       this.sidebar.setCurrentBtn(idx);
     }
+    if (idx === 0) {
+      this.prevBtn.classList.add("hidden-btn");
+    } else if (idx > 0) {
+      this.prevBtn.classList.remove("hidden-btn");
+    }
+
+    if (idx === this.pages.length - 1) {
+      this.nextBtn.classList.add("hidden-btn");
+      this.prevBtn.classList.add("hidden-btn");
+    } else {
+      this.nextBtn.classList.remove("hidden-btn");
+    }
+
+    if (idx === this.pages.length - 2) {
+      this.nextBtn.classList.add("confirm-btn");
+      this.nextBtn.textContent = "Confirm";
+    } else {
+      this.nextBtn.textContent = "Next Step";
+    }
+
     this.currentPage.classList.remove("active");
     this.pages[idx].classList.add("active");
     this.currentPage = this.pages[idx];
@@ -200,7 +222,6 @@ class Summary {
 
   setAddOn({ items, duration }) {
     let temp = "";
-    console.log(items);
     items.forEach((item) => {
       temp += createAddOnElem(item.title, item.price, duration);
     });
